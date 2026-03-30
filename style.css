@@ -101,9 +101,76 @@ img {
   letter-spacing: 0.02em;
 }
 
+.cursor-blink {
+  animation: terminalBlink 1s step-end infinite;
+  margin-left: 2px;
+  font-size: 0.75em;
+  vertical-align: baseline;
+}
+
+@keyframes terminalBlink {
+  0%, 50% { opacity: 1; }
+  51%, 100% { opacity: 0; }
+}
+
 .header__follow {
   font-size: 0.85rem;
   white-space: nowrap;
+  position: relative;
+  padding: 8px 16px;
+  background: transparent;
+  border: none;
+  transition: opacity 0.2s;
+}
+
+.header__follow::before,
+.header__follow::after {
+  content: "";
+  position: absolute;
+  width: 12px;
+  height: 12px;
+  border-color: var(--orange);
+  border-style: solid;
+}
+
+.header__follow::before {
+  top: 0;
+  left: 0;
+  border-width: 1px 0 0 1px;
+}
+
+.header__follow::after {
+  top: 0;
+  right: 0;
+  border-width: 1px 1px 0 0;
+}
+
+.header__follow-corners {
+  position: absolute;
+  inset: 0;
+  pointer-events: none;
+}
+
+.header__follow-corners::before,
+.header__follow-corners::after {
+  content: "";
+  position: absolute;
+  width: 12px;
+  height: 12px;
+  border-color: var(--orange);
+  border-style: solid;
+}
+
+.header__follow-corners::before {
+  bottom: 0;
+  left: 0;
+  border-width: 0 0 1px 1px;
+}
+
+.header__follow-corners::after {
+  bottom: 0;
+  right: 0;
+  border-width: 0 1px 1px 0;
 }
 
 /* ===== Divider ===== */
@@ -120,7 +187,7 @@ img {
 /* ===== Main Layout ===== */
 .main {
   display: grid;
-  grid-template-columns: 300px 1fr;
+  grid-template-columns: 380px 1fr;
   gap: 0 60px;
   padding: 40px 40px 60px;
 }
@@ -141,12 +208,48 @@ img {
 .about__bio {
   margin-top: 24px;
   font-family: var(--font-mono);
-  font-size: 0.85rem;
+  font-size: 0.7rem;
   line-height: 1.3;
 }
 
 .about__bio p + p {
   margin-top: 16px;
+}
+
+.about__follow-mobile {
+  display: none;
+  position: relative;
+  padding: 8px 16px;
+  background: transparent;
+  border: none;
+  font-size: 0.7rem;
+  color: var(--text);
+  text-decoration: none;
+  margin-top: 20px;
+  white-space: nowrap;
+  width: fit-content;
+}
+
+.about__follow-mobile::before,
+.about__follow-mobile::after {
+  content: "";
+  position: absolute;
+  width: 12px;
+  height: 12px;
+  border-color: var(--orange);
+  border-style: solid;
+}
+
+.about__follow-mobile::before {
+  top: 0;
+  left: 0;
+  border-width: 1px 0 0 1px;
+}
+
+.about__follow-mobile::after {
+  top: 0;
+  right: 0;
+  border-width: 1px 1px 0 0;
 }
 
 /* ===== Projects Section ===== */
@@ -163,7 +266,7 @@ img {
 .projects__grid {
   display: grid;
   grid-template-columns: repeat(2, 1fr);
-  gap: 10px;
+  gap: 16px;
 }
 
 .project-card {
@@ -193,9 +296,16 @@ img {
 }
 
 .project-card__desc {
-  font-size: 0.6rem;
+  font-size: 0.7rem;
   line-height: 1.3;
   margin-bottom: 8px;
+}
+
+.project-card__bottom {
+  display: flex;
+  justify-content: space-between;
+  align-items: flex-end;
+  margin-top: auto;
 }
 
 .project-card__year {
@@ -206,8 +316,6 @@ img {
 .project-card__logo-wrap {
   width: 80px;
   height: 80px;
-  margin-top: auto;
-  margin-left: auto;
 }
 
 .project-card__logo {
@@ -215,12 +323,22 @@ img {
   width: 100%;
   height: 100%;
   object-fit: contain;
-  opacity: 0.5;
+  opacity: 0.25;
   transition: opacity 0.3s ease;
 }
 
 .project-card:hover .project-card__logo {
-  opacity: 0.7;
+  opacity: 0.5;
+  animation: logoGlitch 0.3s steps(2) infinite;
+}
+
+@keyframes logoGlitch {
+  0% { transform: translate(0, 0) skewX(0deg); filter: none; }
+  20% { transform: translate(-1px, 1px) skewX(-1deg); filter: hue-rotate(10deg); }
+  40% { transform: translate(1px, -0.5px) skewX(1.5deg); filter: saturate(2); }
+  60% { transform: translate(-1px, -1px) skewX(-0.5deg); filter: hue-rotate(-10deg); }
+  80% { transform: translate(1px, 0.5px) skewX(1deg); filter: brightness(1.3); }
+  100% { transform: translate(0, 0) skewX(0deg); filter: none; }
 }
 
 /* ===== Footer ===== */
@@ -399,7 +517,15 @@ body {
   .about__bio {
     margin-top: 20px;
     padding-bottom: 24px;
-    border-bottom: 1px solid var(--orange);
+  }
+
+  .header__follow {
+    display: none;
+  }
+
+  .about__follow-mobile {
+    display: inline-block;
+    margin-bottom: 24px;
   }
 
   .projects__title {
