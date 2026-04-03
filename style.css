@@ -367,7 +367,11 @@ body {
 
   .about__bio { font-size: 16px; }
 
-  .about__follow-mobile { display: inline-block; }
+  .about__follow-mobile {
+    display: block;
+    width: 100%;
+    text-align: center;
+  }
 
   .projects { padding: 24px 20px; }
 
