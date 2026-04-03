@@ -190,7 +190,7 @@ img { display: block; max-width: 100%; height: auto; }
   flex-direction: column;
   padding: 20px;
   border: 1px solid var(--orange);
-  background: rgba(212, 145, 10, 0.04);
+  background: transparent;
   transition: background 0.3s, box-shadow 0.3s;
   text-decoration: none;
   color: var(--text);
