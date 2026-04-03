@@ -298,14 +298,13 @@ body {
   inset: 0;
   z-index: 0;
   pointer-events: none;
-  background: radial-gradient(ellipse at center, rgba(212, 145, 10, 0.12) 0%, transparent 65%);
-  animation: bgPulse 1.8s ease-in-out infinite;
+  background: radial-gradient(ellipse at center, rgba(212, 145, 10, 0.07) 0%, transparent 65%);
+  animation: bgPulse 3s ease-in-out infinite;
 }
 
 @keyframes bgPulse {
-  0%, 100% { opacity: 0.2; }
-  40%       { opacity: 1; }
-  70%       { opacity: 0.5; }
+  0%, 100% { opacity: 0.15; }
+  50%       { opacity: 0.7; }
 }
 
 @keyframes crtFlicker {
