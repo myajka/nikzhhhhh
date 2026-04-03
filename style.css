@@ -35,7 +35,7 @@ body {
     radial-gradient(ellipse at 50% 0%, #1f1200 0%, #0c0700 100%);
   background-color: #0c0700;
   background-attachment: fixed;
-  animation: crtTextShadow 1.6s infinite, bgPulse 4s ease-in-out infinite;
+  animation: crtTextShadow 1.6s infinite, bgPulse 1.8s ease-in-out infinite;
   color: var(--text);
   font-family: var(--font);
   font-size: 1rem;
@@ -295,8 +295,9 @@ body {
 
 @keyframes bgPulse {
   0%   { background-color: #0c0700; filter: brightness(1); }
-  30%  { background-color: #110a00; filter: brightness(1.08); }
-  60%  { background-color: #0e0800; filter: brightness(1.04); }
+  20%  { background-color: #1a0e00; filter: brightness(1.25); }
+  45%  { background-color: #0c0700; filter: brightness(1); }
+  65%  { background-color: #150b00; filter: brightness(1.18); }
   100% { background-color: #0c0700; filter: brightness(1); }
 }
 
