@@ -35,7 +35,7 @@ body {
     radial-gradient(ellipse at 50% 0%, #1f1200 0%, #0c0700 100%);
   background-color: #0c0700;
   background-attachment: fixed;
-  animation: crtTextShadow 1.6s infinite, bgPulse 1.8s ease-in-out infinite;
+  animation: crtTextShadow 1.6s infinite;
   color: var(--text);
   font-family: var(--font);
   font-size: 1rem;
@@ -293,12 +293,19 @@ body {
   -webkit-font-smoothing: auto;
 }
 
+.bg-flicker {
+  position: fixed;
+  inset: 0;
+  z-index: 0;
+  pointer-events: none;
+  background: radial-gradient(ellipse at center, rgba(212, 145, 10, 0.12) 0%, transparent 65%);
+  animation: bgPulse 1.8s ease-in-out infinite;
+}
+
 @keyframes bgPulse {
-  0%   { background-color: #0c0700; filter: brightness(1); }
-  20%  { background-color: #1a0e00; filter: brightness(1.25); }
-  45%  { background-color: #0c0700; filter: brightness(1); }
-  65%  { background-color: #150b00; filter: brightness(1.18); }
-  100% { background-color: #0c0700; filter: brightness(1); }
+  0%, 100% { opacity: 0.2; }
+  40%       { opacity: 1; }
+  70%       { opacity: 0.5; }
 }
 
 @keyframes crtFlicker {
