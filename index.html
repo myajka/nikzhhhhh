@@ -69,7 +69,7 @@
       <a href="https://3xpl.com/" class="project-card" target="_blank" rel="noopener">
         <div class="project-card__header">
           <span class="project-card__name">3xpl.com</span>
-          <img class="project-card__logo" src="logos/3xpl_pixel.svg" alt="">
+          <img class="project-card__logo" src="logos/3xpl.png" alt="">
         </div>
         <p class="project-card__desc">Lighter and faster version of Blockchair without all the clutter (a part of Blockchair).</p>
         <span class="project-card__year">2023</span>
@@ -133,5 +133,17 @@
     </div>
   </footer>
 
+  <script>
+    function equalizeCards() {
+      const cards = document.querySelectorAll('.project-card');
+      cards.forEach(c => c.style.height = 'auto');
+      if (window.innerWidth <= 600) return;
+      let maxH = 0;
+      cards.forEach(c => maxH = Math.max(maxH, c.offsetHeight));
+      cards.forEach(c => c.style.height = maxH + 'px');
+    }
+    equalizeCards();
+    window.addEventListener('resize', equalizeCards);
+  </script>
 </body>
 </html>
